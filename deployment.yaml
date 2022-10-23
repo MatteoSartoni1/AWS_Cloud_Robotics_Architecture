@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: multirobotapp
+  namespace: multi-robotic-application
+  labels:
+    app: aws-ecr
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: aws-ecr
+  template:
+    metadata:
+      labels:
+        app: aws-ecr
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - amd64
+                - arm64
+      containers:
+      - name: aws-ecr
+        image: 060472927758.dkr.ecr.eu-central-1.amazonaws.com/robomaker-helloworld-
+        robot-app:latest
+        ports:
+        - name: http
+          containerPort: 80
+        imagePullPolicy: IfNotPresent
+      nodeSelector:
+        kubernetes.io/os: linux
+    )
