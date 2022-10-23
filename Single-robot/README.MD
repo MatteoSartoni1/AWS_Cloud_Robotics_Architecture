@@ -1,4 +1,4 @@
-This folder contains the software for the three simulated robots.
+This folder contains the software for the three simulated robots, developed in three different AWS RoboMaker instances.
 
 They are classified as leader and followers since the fleet manager software controls the devices through a Leader-Follower approach. The robot leader can perform its task independently of the followers status, which insteead can perform their rotation if and only if the leader is being simulated.
 
