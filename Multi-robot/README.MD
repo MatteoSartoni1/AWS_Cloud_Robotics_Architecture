@@ -1,4 +1,4 @@
-#Multi-robot
+# Multi-robot
 
 The fleet manager software controls the simulated robots through a Leader-Follower approach. The robot leader can perform its task independent of the followers' status, which instead can accomplish their goal if and only if the leader is being simulated.
 
